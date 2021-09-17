@@ -1,0 +1,10 @@
+{
+    "imports": {
+        "single-spa": "./single-spa.min.js",
+        "react": "./react.min.js",
+        "react-dom": "./react-dom.min.js",
+        "@recro/home": "http://localhost:8081/recro-home.js",
+        "@recro/inspire": "http://localhost:8080/recro-inspire.js",
+        "@recro/checkout": "http://localhost:8082/recro-checkout.js"
+    }
+}
