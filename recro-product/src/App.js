@@ -18,29 +18,22 @@ registerApplication(
   )
 */
 
-const mfes = [
-  {
-   name: '@recro/home',
-   mfePath: ['/home'],
-   props: {prop1:'home'}
-  },
-]
-const register = ({name, mfePath, props})=>registerApplication(
-  name,
-  ()=> window.System.import(name),
-  (location)=> mfePath.includes(location.pathname),
-  {
-    props
-  }
-)
+
 function App() {
   useEffect(()=>{
-      mfes.forEach(mfe=> {
-        register(mfe)
-        start()
+    registerApplication(
+      '@recro/home', 
+      ()=> window.System.import('@recro/home'), 
+      (location)=> {
+        console.log(location.pathname)
+        return location.pathname === '/home'
+      },
+      {
+        name: 'recro'
       })
+      start()
       return ()=>{
-        mfes.forEach(mfe=>unregisterApplication(mfe.name))
+        unregisterApplication('@recro/home')
       }
   }, [])
   return (
